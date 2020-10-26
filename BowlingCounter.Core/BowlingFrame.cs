@@ -16,7 +16,7 @@ namespace BowlingCounter.Core
 
         private bool cantPlayAnymore = false;
 
-        public bool LastFrame { get; private set; }
+        public bool LastFrame { get; private set; } //TODO: Implement logic for last frame.
 
         public BowlingFrame(bool LastFrame)
         {
@@ -46,6 +46,7 @@ namespace BowlingCounter.Core
             {
                 if (cantPlayAnymore)
                 {
+                    // TODO: Create new exception for running out of plays.
                     throw new InvalidOperationException("You have already ended all plays of this frame.");
                 }
                 else
