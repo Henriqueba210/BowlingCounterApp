@@ -8,32 +8,32 @@ namespace BowlingCounter.Core
 
         public int Frame2 { get; private set; }
 
-        public bool Strike { get; private set; }
-
-        public bool Spare { get; private set; }
+        public int Points { get; private set; }
 
         private bool playedOnce = false;
 
         private bool cantPlayAnymore = false;
 
-        public bool LastFrame { get; private set; } //TODO: Implement logic for last frame.
+        public BonusType bonusType { get; private set; }
 
-        public BowlingFrame(bool LastFrame)
+        public BowlingFrame(bool ApplyBonusScoring)
         {
             this.Frame1 = 0;
             this.Frame2 = 0;
-            this.Strike = false;
-            this.Spare = false;
-            this.LastFrame = LastFrame;
         }
 
-        public void setPinsDropped(int numberOfPinsDropped)
+        public BonusType setPinsDropped(int numberOfPinsDropped)
         {
+            if (numberOfPinsDropped > 10 || numberOfPinsDropped < 0)
+            {
+                throw new ArgumentException("Number of pins dropped must be between 0 and 10");
+            }
+
             if (!playedOnce)
             {
                 if (numberOfPinsDropped == 10)
                 {
-                    Strike = true;
+                    bonusType = BonusType.Strike;
                     cantPlayAnymore = true;
                 }
                 else
@@ -53,12 +53,18 @@ namespace BowlingCounter.Core
                 {
                     if (Frame1 + numberOfPinsDropped == 10)
                     {
-                        this.Spare = true;
+                        bonusType = BonusType.Spare;
                     }
                     Frame2 = numberOfPinsDropped;
                     this.cantPlayAnymore = true;
                 }
             }
+            return bonusType;
+        }
+
+        public void calculateScore(int Bonus = 0)
+        {
+            this.Points = Frame1 + Frame2 + Bonus;
         }
 
     }
