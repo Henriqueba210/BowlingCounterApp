@@ -16,5 +16,16 @@ namespace BowlingCounter.Tests
 
             Assert.Throws<InvalidOperationException>(() => bowlingFrame.setPinsDropped(1));
         }
+
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(-19)]
+        [InlineData(11)]
+        public void AssertInvalidNumberOfPinsDropped(int value)
+        {
+            BowlingFrame bowlingFrame = new BowlingFrame(false);
+
+            Assert.Throws<ArgumentException>(() => bowlingFrame.setPinsDropped(value));
+        }
     }
 }
