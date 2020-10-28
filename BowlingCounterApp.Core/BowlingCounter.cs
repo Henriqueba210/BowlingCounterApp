@@ -84,5 +84,13 @@ namespace BowlingCounterApp.Core
         public List<int> IndexStrikeFramesToBeScored = new List<int>();
 
         public List<int> IndexSpareFramesToBeScored = new List<int>();
+
+        public void ResetGameState()
+        {
+            this.CurrentFrame = 0;
+            this.frames.ForEach((bowlingFrame) => bowlingFrame.resetState());
+            this.IndexSpareFramesToBeScored.Clear();
+            this.IndexStrikeFramesToBeScored.Clear();
+        }
     };
 }
