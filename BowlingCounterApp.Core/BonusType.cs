@@ -1,4 +1,4 @@
-namespace BowlingCounter.Core
+namespace BowlingCounterApp.Core
 {
     public enum BonusType { None, Spare, Strike };
 }

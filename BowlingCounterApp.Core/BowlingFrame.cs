@@ -1,6 +1,6 @@
 using System;
 
-namespace BowlingCounter.Core
+namespace BowlingCounterApp.Core
 {
     public class BowlingFrame
     {
@@ -15,6 +15,8 @@ namespace BowlingCounter.Core
         private bool cantPlayAnymore = false;
 
         public BonusType bonusType { get; private set; }
+
+        public int Bonus { get; set; }
 
         public BowlingFrame(bool ApplyBonusScoring)
         {
@@ -62,7 +64,7 @@ namespace BowlingCounter.Core
             return bonusType;
         }
 
-        public void calculateScore(int Bonus = 0)
+        public void calculateScore()
         {
             this.Points = Frame1 + Frame2 + Bonus;
         }

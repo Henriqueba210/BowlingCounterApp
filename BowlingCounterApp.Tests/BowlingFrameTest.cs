@@ -1,8 +1,8 @@
 using System;
-using BowlingCounter.Core;
+using BowlingCounterApp.Core;
 using Xunit;
 
-namespace BowlingCounter.Tests
+namespace BowlingCounterApp.Tests
 {
     public class BowlingFrameTest
     {
