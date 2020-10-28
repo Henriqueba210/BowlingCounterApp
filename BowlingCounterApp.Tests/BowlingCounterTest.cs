@@ -27,7 +27,7 @@ namespace BowlingCounterApp.Tests
             Assert.Equal(30, bowlingCounter.frames[1].Points);
             Assert.Equal(30, bowlingCounter.frames[2].Points);
             Assert.Equal(20, bowlingCounter.frames[3].Points);
-            Assert.Equal(14, bowlingCounter.frames[4].Points);
+            Assert.Equal(18, bowlingCounter.frames[4].Points);
             Assert.Equal(8, bowlingCounter.frames[5].Points);
             Assert.Equal(6, bowlingCounter.frames[6].Points);
             Assert.Equal(4, bowlingCounter.frames[7].Points);
