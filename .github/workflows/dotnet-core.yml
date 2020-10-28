@@ -20,6 +20,6 @@ jobs:
     - name: Install dependencies
       run: dotnet restore /BowlingCounterApp
     - name: Build
-      run: dotnet build BowlingCounterApp.Tests/BowlingCounterApp.Tests.csproj --configuration Release --no-restore
+      run: dotnet build ../BowlingCounterApp.Tests/BowlingCounterApp.Tests.csproj --configuration Release --no-restore
     - name: Test
-      run: dotnet test BowlingCounterApp.Tests/BowlingCounterApp.Tests.csproj --no-restore --verbosity normal
+      run: dotnet test ../BowlingCounterApp.Tests/BowlingCounterApp.Tests.csproj --no-restore --verbosity normal
