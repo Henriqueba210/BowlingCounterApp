@@ -13,7 +13,7 @@ When a player reaches the last frame if they score 2 strikes or a spare they can
 
 - [x] Calculating the score without any bonus
 - [x] Calculating Strike bonuses
-- [ ] Calculating Spare bonuses
+- [x] Calculating Spare bonuses
 - [ ] Implement last frame game logic
 - [ ] Game logic for multiple players
 - [ ] Create tests to confirm all functionality works properly
