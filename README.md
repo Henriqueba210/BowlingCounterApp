@@ -18,3 +18,30 @@ When a player reaches the last frame if they score 2 strikes or a spare they can
 - [ ] Game logic for multiple players
 - [ ] Create tests to confirm all functionality works properly
 - [ ] Create a Web Api so that a client interface can access logic from the server
+
+## Steps To Generate Coverage Reports
+
+1. Create a terminal instance in your tests project folder
+2. Add the coverlet package to your project
+
+    ``` bash
+    dotnet add package coverlet.msbuild
+    ```
+
+3. Install the dotnet reportgenerator to generate HTML previews of the coverage report
+
+    ``` bash
+    dotnet tool install -g dotnet-reportgenerator-globaltool
+    ```
+
+4. Run the test command with this parameter to generate the coverage report
+
+    ``` bash
+    dotnet test --collect:"XPlat Code Coverage"
+    ```
+
+5. Run the reportgenerator command to generate the HTML coverage report
+
+    ``` bash
+    reportgenerator -reports:{Your project test folder path}/TestResults/{Generated GUID for the report}/coverage.cobertura.xml -targetdir:coveragereport -reporttypes:Html
+    ```
