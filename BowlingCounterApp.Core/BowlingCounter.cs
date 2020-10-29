@@ -10,14 +10,22 @@ namespace BowlingCounterApp.Core
 
         public int TotalScore { get; private set; }
 
-        public void PlayFrame(int firstPlay, int secondPlay = 0)
+        public void PlayFrame(int firstPlay, int secondPlay = 0, int thirdPlay = 0)
         {
             var bowlingFrame = frames[CurrentFrame];
 
             var bonusScored = bowlingFrame.setPinsDropped(firstPlay);
-            if (bonusScored == BonusType.Strike)
+            if (bonusScored == BonusType.Strike && !bowlingFrame.LastFrame)
             {
                 IndexStrikeFramesToBeScored.Add(CurrentFrame);
+            }
+            else if (bowlingFrame.LastFrame)
+            {
+                bonusScored = bowlingFrame.setPinsDropped(secondPlay);
+                if (bonusScored == BonusType.Spare || bonusScored == BonusType.Strike)
+                {
+                    bowlingFrame.setPinsDropped(thirdPlay);
+                }
             }
             else
             {
