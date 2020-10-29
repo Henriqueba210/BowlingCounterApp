@@ -67,7 +67,7 @@ namespace BowlingCounterApp.Core
                 }
                 else
                 {
-                    if (!cantPlayAnymore && numberOfPlays >= 1)
+                    if (!cantPlayAnymore)
                     {
                         if (Frame1 + numberOfPinsDropped == 10)
                         {
