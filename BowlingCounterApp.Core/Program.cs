@@ -10,12 +10,20 @@ namespace BowlingCounterApp.Core
 
             for (int i = 0; i < 8; i++)
             {
-                bowlingCounter.PlayFrame((int frameNumber) =>
-                {
-                    Console.Write($"Insert the number of pins dropped in frame {frameNumber}: ");
-                    return Convert.ToInt32(Console.ReadLine());
-                });
+                int firstPlay = askForPinsDropped();
+                int secondPlay = 0;
+
+                if (firstPlay < 10)
+                    secondPlay = askForPinsDropped(2);
+
+                bowlingCounter.PlayFrame(firstPlay, secondPlay);
             }
+        }
+
+        private static int askForPinsDropped(int frameNumber = 1)
+        {
+            Console.Write($"Insert the number of pins dropped in attempt {frameNumber}: ");
+            return Convert.ToInt32(Console.ReadLine());
         }
     }
 }

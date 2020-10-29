@@ -8,18 +8,18 @@ namespace BowlingCounterApp.Core
     {
         public int CurrentFrame { get; private set; } = 0;
 
-        public void PlayFrame(Func<int, int> askForNumberOfPinsDropped)
+        public void PlayFrame(int firstPlay, int secondPlay = 0)
         {
             var bowlingFrame = frames[CurrentFrame];
 
-            var bonusScored = bowlingFrame.setPinsDropped(askForNumberOfPinsDropped(1));
+            var bonusScored = bowlingFrame.setPinsDropped(firstPlay);
             if (bonusScored == BonusType.Strike)
             {
                 IndexStrikeFramesToBeScored.Add(CurrentFrame);
             }
             else
             {
-                bonusScored = bowlingFrame.setPinsDropped(askForNumberOfPinsDropped(2));
+                bonusScored = bowlingFrame.setPinsDropped(secondPlay);
                 if (bonusScored == BonusType.Spare)
                     IndexSpareFramesToBeScored.Add(CurrentFrame);
             }

@@ -12,16 +12,16 @@ namespace BowlingCounterApp.Tests
         {
             var bowlingCounter = new BowlingCounter();
 
-            bowlingCounter.PlayFrame((int i) => 10);
-            bowlingCounter.PlayFrame((int i) => 10);
-            bowlingCounter.PlayFrame((int i) => 10);
-            bowlingCounter.PlayFrame((int i) => 5);
-            bowlingCounter.PlayFrame((int i) => 5);
-            bowlingCounter.PlayFrame((int i) => 4);
-            bowlingCounter.PlayFrame((int i) => 3);
-            bowlingCounter.PlayFrame((int i) => 2);
-            bowlingCounter.PlayFrame((int i) => 1);
-            bowlingCounter.PlayFrame((int i) => 0);
+            bowlingCounter.PlayFrame(10);
+            bowlingCounter.PlayFrame(10);
+            bowlingCounter.PlayFrame(10);
+            bowlingCounter.PlayFrame(5, 5);
+            bowlingCounter.PlayFrame(5, 5);
+            bowlingCounter.PlayFrame(4, 4);
+            bowlingCounter.PlayFrame(3, 3);
+            bowlingCounter.PlayFrame(2, 2);
+            bowlingCounter.PlayFrame(1, 1);
+            bowlingCounter.PlayFrame(0, 0);
 
             Assert.Equal(30, bowlingCounter.frames[0].Points);
             Assert.Equal(30, bowlingCounter.frames[1].Points);
@@ -40,8 +40,8 @@ namespace BowlingCounterApp.Tests
         {
             var bowlingCounter = new BowlingCounter();
 
-            bowlingCounter.PlayFrame((int i) => 10);
-            bowlingCounter.PlayFrame((int i) => 5);
+            bowlingCounter.PlayFrame(10);
+            bowlingCounter.PlayFrame(5, 5);
 
 
             bowlingCounter.ResetGameState();
@@ -49,7 +49,6 @@ namespace BowlingCounterApp.Tests
             Assert.Equal(0, bowlingCounter.CurrentFrame);
             Assert.Empty(bowlingCounter.IndexSpareFramesToBeScored);
             Assert.Empty(bowlingCounter.IndexStrikeFramesToBeScored);
-            Assert.Equal(0, bowlingCounter.CurrentFrame);
 
             bowlingCounter.frames.ForEach(bowlingFrame =>
             {
