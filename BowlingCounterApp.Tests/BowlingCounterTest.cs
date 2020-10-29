@@ -33,6 +33,8 @@ namespace BowlingCounterApp.Tests
             Assert.Equal(4, bowlingCounter.frames[7].Points);
             Assert.Equal(2, bowlingCounter.frames[8].Points);
             Assert.Equal(0, bowlingCounter.frames[9].Points);
+
+            Assert.Equal(148, bowlingCounter.TotalScore);
         }
 
         [Fact]
@@ -47,6 +49,7 @@ namespace BowlingCounterApp.Tests
             bowlingCounter.ResetGameState();
 
             Assert.Equal(0, bowlingCounter.CurrentFrame);
+            Assert.Equal(0, bowlingCounter.TotalScore);
             Assert.Empty(bowlingCounter.IndexSpareFramesToBeScored);
             Assert.Empty(bowlingCounter.IndexStrikeFramesToBeScored);
 

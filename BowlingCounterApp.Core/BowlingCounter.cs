@@ -8,6 +8,8 @@ namespace BowlingCounterApp.Core
     {
         public int CurrentFrame { get; private set; } = 0;
 
+        public int TotalScore { get; private set; }
+
         public void PlayFrame(int firstPlay, int secondPlay = 0)
         {
             var bowlingFrame = frames[CurrentFrame];
@@ -28,6 +30,8 @@ namespace BowlingCounterApp.Core
 
             CalculateStrikeScoreBonus();
             CalculateSpareScoreBonus();
+
+            CalculateTotalScore();
 
             CurrentFrame++;
         }
@@ -81,6 +85,13 @@ namespace BowlingCounterApp.Core
             bonusFrame.Bonus += nextFrame.Points;
             bonusFrame.calculateScore();
         }
+
+        public void CalculateTotalScore()
+        {
+            this.TotalScore = 0;
+            this.frames.ForEach((bowlingFrame) => this.TotalScore += bowlingFrame.Points);
+        }
+
         public List<int> IndexStrikeFramesToBeScored = new List<int>();
 
         public List<int> IndexSpareFramesToBeScored = new List<int>();
@@ -88,6 +99,7 @@ namespace BowlingCounterApp.Core
         public void ResetGameState()
         {
             this.CurrentFrame = 0;
+            this.TotalScore = 0;
             this.frames.ForEach((bowlingFrame) => bowlingFrame.resetState());
             this.IndexSpareFramesToBeScored.Clear();
             this.IndexStrikeFramesToBeScored.Clear();
