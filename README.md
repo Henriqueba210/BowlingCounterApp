@@ -50,7 +50,7 @@ When a player reaches the last frame if they score 2 strikes or a spare they can
 5. Run the reportgenerator command to generate the HTML coverage report
 
     ``` bash
-    reportgenerator -reports:{Your project test folder path}/TestResults/{Generated GUID for the report}/coverage.cobertura.xml -targetdir:coveragereport -reporttypes:Html
+    reportgenerator -reports:BowlingCounterApp.Tests/TestResults/{Generated GUID for the report}/coverage.cobertura.xml -targetdir:coveragereport -reporttypes:Html
     ```
 
 [contributors-shield]: https://img.shields.io/github/issues/Henriqueba210/BowlingCounterApp?style=flat-square
