@@ -27,5 +27,21 @@ namespace BowlingCounterApp.Tests
 
             Assert.Throws<ArgumentException>(() => bowlingFrame.setPinsDropped(value));
         }
+
+        [Fact]
+        public void AssertStateHasBeenReset()
+        {
+            BowlingFrame bowlingFrame = new BowlingFrame(false);
+
+            bowlingFrame.setPinsDropped(5);
+            bowlingFrame.setPinsDropped(5);
+
+            bowlingFrame.resetState();
+
+            Assert.Equal(0, bowlingFrame.Frame1);
+            Assert.Equal(0, bowlingFrame.Frame2);
+            Assert.Equal(0, bowlingFrame.Bonus);
+            Assert.Equal(0, bowlingFrame.Points);
+        }
     }
 }

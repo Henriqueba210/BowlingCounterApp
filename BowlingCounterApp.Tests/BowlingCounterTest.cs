@@ -34,5 +34,30 @@ namespace BowlingCounterApp.Tests
             Assert.Equal(2, bowlingCounter.frames[8].Points);
             Assert.Equal(0, bowlingCounter.frames[9].Points);
         }
+
+        [Fact]
+        public void AssertStateHasBeenReset()
+        {
+            var bowlingCounter = new BowlingCounter();
+
+            bowlingCounter.PlayFrame((int i) => 10);
+            bowlingCounter.PlayFrame((int i) => 5);
+
+
+            bowlingCounter.ResetGameState();
+
+            Assert.Equal(0, bowlingCounter.CurrentFrame);
+            Assert.Empty(bowlingCounter.IndexSpareFramesToBeScored);
+            Assert.Empty(bowlingCounter.IndexStrikeFramesToBeScored);
+            Assert.Equal(0, bowlingCounter.CurrentFrame);
+
+            bowlingCounter.frames.ForEach(bowlingFrame =>
+            {
+                Assert.Equal(0, bowlingFrame.Frame1);
+                Assert.Equal(0, bowlingFrame.Frame2);
+                Assert.Equal(0, bowlingFrame.Bonus);
+                Assert.Equal(0, bowlingFrame.Points);
+            });
+        }
     }
 }
