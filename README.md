@@ -2,6 +2,13 @@
 
 > The objective of this repository is to create an app that can count the number of points in a bowling game.
 
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
 ## Game Logic
 
 The point system works as follows: A game is composed of 10 frames, each with two tries on dropping all pins, the score of the frame is determined by the number of pins dropped.
@@ -45,3 +52,16 @@ When a player reaches the last frame if they score 2 strikes or a spare they can
     ``` bash
     reportgenerator -reports:{Your project test folder path}/TestResults/{Generated GUID for the report}/coverage.cobertura.xml -targetdir:coveragereport -reporttypes:Html
     ```
+
+[contributors-shield]: https://img.shields.io/github/issues/Henriqueba210/BowlingCounterApp?style=flat-square
+[contributors-url]: https://github.com/Henriqueba210/BowlingCounterApp/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Henriqueba210/BowlingCounterApp?style=flat-square
+[forks-url]: https://github.com/Henriqueba210/BowlingCounterApp/network/members
+[stars-shield]: https://img.shields.io/github/stars/Henriqueba210/BowlingCounterApp?style=flat-square
+[stars-url]: https://github.com/Henriqueba210/BowlingCounterApp/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Henriqueba210/BowlingCounterApp?style=flat-square
+[issues-url]: https://github.com/Henriqueba210/BowlingCounterApp/issues
+[license-shield]: https://img.shields.io/github/license/Henriqueba210/BowlingCounterApp?style=flat-square
+[license-url]: https://github.com/Henriqueba210/BowlingCounterApp/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/henrique-barros-de-almeida-1411a0177/
