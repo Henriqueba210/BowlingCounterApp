@@ -12,11 +12,11 @@ namespace BowlingCounterApp.Tests
         {
             var bowlingCounter = new BowlingCounter();
 
-            bowlingCounter.PlayFrame(10);
-            bowlingCounter.PlayFrame(10);
-            bowlingCounter.PlayFrame(10);
-            bowlingCounter.PlayFrame(5, 5);
-            bowlingCounter.PlayFrame(5, 5);
+            PerformStrike(bowlingCounter);
+            PerformStrike(bowlingCounter);
+            PerformStrike(bowlingCounter);
+            PerformSpare(bowlingCounter);
+            PerformSpare(bowlingCounter);
             bowlingCounter.PlayFrame(4, 4);
             bowlingCounter.PlayFrame(3, 3);
             bowlingCounter.PlayFrame(2, 2);
@@ -40,8 +40,8 @@ namespace BowlingCounterApp.Tests
         {
             var bowlingCounter = new BowlingCounter();
 
-            bowlingCounter.PlayFrame(10);
-            bowlingCounter.PlayFrame(5, 5);
+            PerformStrike(bowlingCounter);
+            PerformSpare(bowlingCounter);
 
 
             bowlingCounter.ResetGameState();
@@ -57,6 +57,16 @@ namespace BowlingCounterApp.Tests
                 Assert.Equal(0, bowlingFrame.Bonus);
                 Assert.Equal(0, bowlingFrame.Points);
             });
+        }
+
+        private void PerformStrike(BowlingCounter bowlingCounter)
+        {
+            bowlingCounter.PlayFrame(10);
+        }
+
+        private void PerformSpare(BowlingCounter bowlingCounter)
+        {
+            bowlingCounter.PlayFrame(5, 5);
         }
     }
 }
