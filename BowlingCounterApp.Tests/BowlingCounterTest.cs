@@ -62,6 +62,73 @@ namespace BowlingCounterApp.Tests
             });
         }
 
+        [Fact]
+        public void AssertGutterGameScoreIsZero()
+        {
+            var bowlingCounter = new BowlingCounter();
+
+            RepeatThrows(bowlingCounter, 0, 10);
+
+            Assert.Equal(0, bowlingCounter.TotalScore);
+        }
+
+        [Fact]
+        public void AssertOnePinDropGameIsTwenty()
+        {
+            var bowlingCounter = new BowlingCounter();
+
+            RepeatThrows(bowlingCounter, 1, 10);
+
+            Assert.Equal(20, bowlingCounter.TotalScore);
+        }
+
+        [Fact]
+        public void AssertPerfectGameScoreIs300()
+        {
+            var bowlingCounter = new BowlingCounter();
+
+            RepeatThrows(bowlingCounter, 10, 9);
+
+            bowlingCounter.PlayFrame(10, 10, 10);
+
+            Assert.Equal(300, bowlingCounter.TotalScore);
+        }
+
+        [Fact]
+        public void AssertScoreIs16ForASpareFollowedBy3Ball()
+        {
+            var bowlingCounter = new BowlingCounter();
+
+            bowlingCounter.PlayFrame(4, 6);
+            bowlingCounter.PlayFrame(3, 0);
+
+            Assert.Equal(16, bowlingCounter.TotalScore);
+        }
+
+
+        [Fact]
+        public void AssertScoreIs24ForAStrikeFollowedBy3And4Ball()
+        {
+            var bowlingCounter = new BowlingCounter();
+
+            PerformStrike(bowlingCounter);
+            bowlingCounter.PlayFrame(3, 0);
+            bowlingCounter.PlayFrame(4, 0);
+
+            Assert.Equal(24, bowlingCounter.TotalScore);
+        }
+
+        [Fact]
+        public void AssertScoreIs30ForAStrikeFollowedBySpare()
+        {
+            var bowlingCounter = new BowlingCounter();
+
+            PerformStrike(bowlingCounter);
+            PerformSpare(bowlingCounter);
+
+            Assert.Equal(30, bowlingCounter.TotalScore);
+        }
+
         private void PerformStrike(BowlingCounter bowlingCounter)
         {
             bowlingCounter.PlayFrame(10);
@@ -70,6 +137,14 @@ namespace BowlingCounterApp.Tests
         private void PerformSpare(BowlingCounter bowlingCounter)
         {
             bowlingCounter.PlayFrame(5, 5);
+        }
+
+        private void RepeatThrows(BowlingCounter bowlingCounter, int pinsDropped, int numberOfThrows)
+        {
+            for (int playCounter = 0; playCounter < numberOfThrows; playCounter++)
+            {
+                bowlingCounter.PlayFrame(pinsDropped, pinsDropped);
+            }
         }
     }
 }
