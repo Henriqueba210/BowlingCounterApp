@@ -56,7 +56,7 @@ When a player reaches the last frame if they score 2 strikes or a spare they can
 [contributors-shield]: https://img.shields.io/github/issues/Henriqueba210/BowlingCounterApp?style=flat-square
 [contributors-url]: https://github.com/Henriqueba210/BowlingCounterApp/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Henriqueba210/BowlingCounterApp?style=flat-square
-[forks-url]: https://github.com/Henriqueba210/BowlingCounterApp/network/members
+[forks-url]: https://github.com/Henriqueba210/BowlingCounterApp/network
 [stars-shield]: https://img.shields.io/github/stars/Henriqueba210/BowlingCounterApp?style=flat-square
 [stars-url]: https://github.com/Henriqueba210/BowlingCounterApp/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Henriqueba210/BowlingCounterApp?style=flat-square
