@@ -69,11 +69,11 @@ namespace BowlingCounterApp.Core
                 {
                     if (!cantPlayAnymore)
                     {
-                        if (isSpare(Frame1, numberOfPinsDropped))
+                        if ((isSpare(Frame1, Frame2) || isStrike(Frame1) || isStrike(Frame2)) && numberOfPlays == 2)
                         {
-                            bonusType = BonusType.Spare;
-                            Frame2 = numberOfPinsDropped;
+                            Frame3 = numberOfPinsDropped;
                             numberOfPlays++;
+                            cantPlayAnymore = true;
                         }
                         else if (isStrike(numberOfPinsDropped) || isStrike(Frame1))
                         {
@@ -81,11 +81,11 @@ namespace BowlingCounterApp.Core
                             Frame2 = numberOfPinsDropped;
                             numberOfPlays++;
                         }
-                        else if ((bonusType == BonusType.Spare || bonusType == BonusType.Strike) && numberOfPlays == 2)
+                        else if (isSpare(Frame1, numberOfPinsDropped))
                         {
-                            Frame3 = numberOfPinsDropped;
+                            bonusType = BonusType.Spare;
+                            Frame2 = numberOfPinsDropped;
                             numberOfPlays++;
-                            cantPlayAnymore = true;
                         }
                         else
                         {
