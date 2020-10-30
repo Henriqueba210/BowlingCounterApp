@@ -115,12 +115,12 @@ namespace BowlingCounterApp.Core
             this.numberOfPlays = 0;
         }
 
-        private bool isStrike(int numberOfPinsDropped)
+        public bool isStrike(int numberOfPinsDropped)
         {
             return numberOfPinsDropped == 10;
         }
 
-        private bool isSpare(int previousFrame, int numberOfPinsDropped)
+        public bool isSpare(int previousFrame, int numberOfPinsDropped)
         {
             return previousFrame + numberOfPinsDropped == 10;
         }

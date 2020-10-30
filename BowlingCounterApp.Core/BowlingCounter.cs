@@ -59,7 +59,7 @@ namespace BowlingCounterApp.Core
 
         public void CalculateStrikeScoreBonus()
         {
-            if (IndexStrikeFramesToBeScored.Count > 0)
+            if (IndexStrikeFramesToBeScored.Count > 0 && !frames[CurrentFrame].LastFrame)
             {
                 foreach (var StrikeFrame in IndexStrikeFramesToBeScored.ToArray())
                 {
@@ -69,6 +69,23 @@ namespace BowlingCounterApp.Core
                         if (CurrentFrame == StrikeFrame + 2)
                             IndexStrikeFramesToBeScored.Remove(StrikeFrame);
                     }
+                }
+            }
+            else
+            {
+                var frame8 = frames[7];
+                var frame9 = frames[8];
+                var frame10 = frames[9];
+
+                if (frame8.isStrike(frame8.Frame1))
+                {
+                    frame8.Bonus = frame9.Points + frame10.Frame1;
+                    frame8.calculateScore();
+                }
+                if (frame9.isStrike(frame9.Frame1))
+                {
+                    frame9.Bonus = frame10.Frame1 + frame10.Frame2;
+                    frame9.calculateScore();
                 }
             }
         }
