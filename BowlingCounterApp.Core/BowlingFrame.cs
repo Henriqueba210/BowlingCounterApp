@@ -108,6 +108,7 @@ namespace BowlingCounterApp.Core
         {
             this.Frame1 = 0;
             this.Frame2 = 0;
+            this.Frame3 = 0;
             this.Bonus = 0;
             this.Points = 0;
             this.cantPlayAnymore = false;
