@@ -129,6 +129,30 @@ namespace BowlingCounterApp.Tests
             Assert.Equal(30, bowlingCounter.TotalScore);
         }
 
+        [Fact]
+        public void AssertFunctionalityForSpareInLastFrameWorks()
+        {
+            var bowlingCounter = new BowlingCounter();
+
+            RepeatThrows(bowlingCounter, 5, 9);
+
+            bowlingCounter.PlayFrame(5, 5, 5);
+
+            Assert.Equal(15, bowlingCounter.frames[9].Points);
+        }
+
+        [Fact]
+        public void AssertFunctionalityForNotBeingAbleToPlayExtraFrameInLastFrameWorks()
+        {
+            var bowlingCounter = new BowlingCounter();
+
+            RepeatThrows(bowlingCounter, 5, 9);
+
+            bowlingCounter.PlayFrame(5, 4, 1);
+
+            Assert.Equal(9, bowlingCounter.frames[9].Points);
+        }
+
         private void PerformStrike(BowlingCounter bowlingCounter)
         {
             bowlingCounter.PlayFrame(10);
