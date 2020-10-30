@@ -59,7 +59,7 @@ namespace BowlingCounterApp.Tests
                 Assert.Equal(0, bowlingFrame.Frame2);
                 Assert.Equal(0, bowlingFrame.Bonus);
                 Assert.Equal(0, bowlingFrame.Points);
-                Assert.Equal(BonusType.None, bowlingFrame.bonusType);
+                Assert.Equal(BonusType.None, bowlingFrame.BonusType);
             });
         }
 

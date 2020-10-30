@@ -77,12 +77,12 @@ namespace BowlingCounterApp.Core
                 var frame9 = frames[8];
                 var frame10 = frames[9];
 
-                if (frame8.bonusType == BonusType.Strike)
+                if (frame8.BonusType == BonusType.Strike)
                 {
                     frame8.Bonus = frame9.Points + frame10.Frame1;
                     frame8.calculateScore();
                 }
-                if (frame9.bonusType == BonusType.Strike)
+                if (frame9.BonusType == BonusType.Strike)
                 {
                     frame9.Bonus = frame10.Frame1 + frame10.Frame2;
                     frame9.calculateScore();

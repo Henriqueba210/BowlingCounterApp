@@ -12,13 +12,13 @@ namespace BowlingCounterApp.Core
 
         public int Points { get; private set; }
 
-        public int numberOfPlays = 0;
+        public int NumberOfPlays = 0;
 
-        private bool cantPlayAnymore = false;
+        private bool CantPlayAnymore = false;
 
         public int Bonus { get; set; }
 
-        public BonusType bonusType { get; set; } = BonusType.None;
+        public BonusType BonusType { get; set; } = BonusType.None;
 
         public bool LastFrame { get; private set; }
 
@@ -34,24 +34,24 @@ namespace BowlingCounterApp.Core
                 throw new ArgumentException("Number of pins dropped must be between 0 and 10");
             }
 
-            if (numberOfPlays == 0)
+            if (NumberOfPlays == 0)
             {
 
                 if (isStrike(numberOfPinsDropped))
                 {
-                    bonusType = BonusType.Strike;
-                    cantPlayAnymore = !LastFrame ? true : false;
+                    BonusType = BonusType.Strike;
+                    CantPlayAnymore = !LastFrame ? true : false;
                 }
                 else
                 {
-                    bonusType = BonusType.None;
+                    BonusType = BonusType.None;
                 }
-                numberOfPlays++;
+                NumberOfPlays++;
                 Frame1 = numberOfPinsDropped;
             }
             else
             {
-                if (cantPlayAnymore)
+                if (CantPlayAnymore)
                 {
                     // TODO: Create new exception for running out of plays.
                     throw new InvalidOperationException("You have already ended all plays of this frame.");
@@ -60,43 +60,43 @@ namespace BowlingCounterApp.Core
                 {
                     if (isSpare(Frame1, numberOfPinsDropped))
                     {
-                        bonusType = BonusType.Spare;
+                        BonusType = BonusType.Spare;
                     }
                     Frame2 = numberOfPinsDropped;
-                    this.cantPlayAnymore = true;
+                    this.CantPlayAnymore = true;
                 }
                 else
                 {
-                    if (!cantPlayAnymore)
+                    if (!CantPlayAnymore)
                     {
-                        if ((isSpare(Frame1, Frame2) || isStrike(Frame1) || isStrike(Frame2)) && numberOfPlays == 2)
+                        if ((isSpare(Frame1, Frame2) || isStrike(Frame1) || isStrike(Frame2)) && NumberOfPlays == 2)
                         {
                             Frame3 = numberOfPinsDropped;
-                            numberOfPlays++;
-                            cantPlayAnymore = true;
+                            NumberOfPlays++;
+                            CantPlayAnymore = true;
                         }
                         else if (isStrike(numberOfPinsDropped) || isStrike(Frame1))
                         {
-                            bonusType = BonusType.Strike;
+                            BonusType = BonusType.Strike;
                             Frame2 = numberOfPinsDropped;
-                            numberOfPlays++;
+                            NumberOfPlays++;
                         }
                         else if (isSpare(Frame1, numberOfPinsDropped))
                         {
-                            bonusType = BonusType.Spare;
+                            BonusType = BonusType.Spare;
                             Frame2 = numberOfPinsDropped;
-                            numberOfPlays++;
+                            NumberOfPlays++;
                         }
                         else
                         {
-                            bonusType = BonusType.None;
+                            BonusType = BonusType.None;
                             Frame2 = numberOfPinsDropped;
-                            cantPlayAnymore = true;
+                            CantPlayAnymore = true;
                         }
                     }
                 }
             }
-            return bonusType;
+            return BonusType;
         }
 
         public void calculateScore()
@@ -111,9 +111,9 @@ namespace BowlingCounterApp.Core
             this.Frame3 = 0;
             this.Bonus = 0;
             this.Points = 0;
-            this.bonusType = BonusType.None;
-            this.cantPlayAnymore = false;
-            this.numberOfPlays = 0;
+            this.BonusType = BonusType.None;
+            this.CantPlayAnymore = false;
+            this.NumberOfPlays = 0;
         }
 
         private bool isStrike(int numberOfPinsDropped)
