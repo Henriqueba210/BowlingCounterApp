@@ -1,4 +1,4 @@
-# Bowling Counter App
+# Bowling Counter App 🎳
 
 > The objective of this repository is to create an app that can count the number of points in a bowling game.
 
