@@ -102,9 +102,9 @@ namespace BowlingCounterApp.Tests
             var bowlingCounter = new BowlingCounter();
 
             bowlingCounter.PlayFrame(4, 6);
-            bowlingCounter.PlayFrame(3, 0);
+            bowlingCounter.PlayFrame(0, 3);
 
-            Assert.Equal(16, bowlingCounter.TotalScore);
+            Assert.Equal(13, bowlingCounter.TotalScore);
         }
 
 
@@ -155,6 +155,19 @@ namespace BowlingCounterApp.Tests
             Assert.Equal(9, bowlingCounter.frames[9].Points);
         }
 
+        [Fact]
+        public void Test()
+        {
+            var bowlingCounter = new BowlingCounter();
+
+            bowlingCounter.PlayFrame(1, 9);
+
+            bowlingCounter.PlayFrame(1, 3);
+
+
+            Assert.Equal(15, bowlingCounter.TotalScore);
+        }
+
         private void PerformStrike(BowlingCounter bowlingCounter)
         {
             bowlingCounter.PlayFrame(10);
@@ -162,7 +175,7 @@ namespace BowlingCounterApp.Tests
 
         private void PerformSpare(BowlingCounter bowlingCounter)
         {
-            bowlingCounter.PlayFrame(5, 5);
+            bowlingCounter.PlayFrame(8, 2);
         }
 
         private void RepeatThrows(BowlingCounter bowlingCounter, int pinsDropped, int numberOfThrows)
