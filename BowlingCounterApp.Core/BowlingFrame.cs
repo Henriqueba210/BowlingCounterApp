@@ -12,11 +12,13 @@ namespace BowlingCounterApp.Core
 
         public int Points { get; private set; }
 
-        private int numberOfPlays = 0;
+        public int numberOfPlays = 0;
 
         private bool cantPlayAnymore = false;
 
         public int Bonus { get; set; }
+
+        public BonusType bonusType { get; set; } = BonusType.None;
 
         public bool LastFrame { get; private set; }
 
@@ -31,8 +33,6 @@ namespace BowlingCounterApp.Core
             {
                 throw new ArgumentException("Number of pins dropped must be between 0 and 10");
             }
-
-            var bonusType = BonusType.None;
 
             if (numberOfPlays == 0)
             {
@@ -111,16 +111,17 @@ namespace BowlingCounterApp.Core
             this.Frame3 = 0;
             this.Bonus = 0;
             this.Points = 0;
+            this.bonusType = BonusType.None;
             this.cantPlayAnymore = false;
             this.numberOfPlays = 0;
         }
 
-        public bool isStrike(int numberOfPinsDropped)
+        private bool isStrike(int numberOfPinsDropped)
         {
             return numberOfPinsDropped == 10;
         }
 
-        public bool isSpare(int previousFrame, int numberOfPinsDropped)
+        private bool isSpare(int previousFrame, int numberOfPinsDropped)
         {
             return previousFrame + numberOfPinsDropped == 10;
         }
