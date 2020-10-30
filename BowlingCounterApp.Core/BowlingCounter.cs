@@ -14,27 +14,27 @@ namespace BowlingCounterApp.Core
         {
             var bowlingFrame = frames[CurrentFrame];
 
-            var bonusScored = bowlingFrame.setPinsDropped(firstPlay);
+            var bonusScored = bowlingFrame.SetPinsDropped(firstPlay);
             if (bonusScored == BonusType.Strike && !bowlingFrame.LastFrame)
             {
                 IndexStrikeFramesToBeScored.Add(CurrentFrame);
             }
             else if (bowlingFrame.LastFrame)
             {
-                bonusScored = bowlingFrame.setPinsDropped(secondPlay);
+                bonusScored = bowlingFrame.SetPinsDropped(secondPlay);
                 if (bonusScored == BonusType.Spare || bonusScored == BonusType.Strike)
                 {
-                    bowlingFrame.setPinsDropped(thirdPlay);
+                    bowlingFrame.SetPinsDropped(thirdPlay);
                 }
             }
             else
             {
-                bonusScored = bowlingFrame.setPinsDropped(secondPlay);
+                bonusScored = bowlingFrame.SetPinsDropped(secondPlay);
                 if (bonusScored == BonusType.Spare)
                     IndexSpareFramesToBeScored.Add(CurrentFrame);
             }
 
-            bowlingFrame.calculateScore();
+            bowlingFrame.CalculateScore();
 
             CalculateStrikeScoreBonus();
             CalculateSpareScoreBonus();
@@ -80,12 +80,12 @@ namespace BowlingCounterApp.Core
                 if (frame8.BonusType == BonusType.Strike)
                 {
                     frame8.Bonus = frame9.Points + frame10.Frame1;
-                    frame8.calculateScore();
+                    frame8.CalculateScore();
                 }
                 if (frame9.BonusType == BonusType.Strike)
                 {
                     frame9.Bonus = frame10.Frame1 + frame10.Frame2;
-                    frame9.calculateScore();
+                    frame9.CalculateScore();
                 }
             }
         }
@@ -108,7 +108,7 @@ namespace BowlingCounterApp.Core
         public void CalculateBonus(BowlingFrame bonusFrame, BowlingFrame nextFrame)
         {
             bonusFrame.Bonus += nextFrame.Points;
-            bonusFrame.calculateScore();
+            bonusFrame.CalculateScore();
         }
 
         public void CalculateTotalScore()
@@ -125,7 +125,7 @@ namespace BowlingCounterApp.Core
         {
             this.CurrentFrame = 0;
             this.TotalScore = 0;
-            this.frames.ForEach((bowlingFrame) => bowlingFrame.resetState());
+            this.frames.ForEach((bowlingFrame) => bowlingFrame.ResetState());
             this.IndexSpareFramesToBeScored.Clear();
             this.IndexStrikeFramesToBeScored.Clear();
         }

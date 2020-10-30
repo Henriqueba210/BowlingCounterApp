@@ -11,10 +11,10 @@ namespace BowlingCounterApp.Tests
         {
             BowlingFrame bowlingFrame = new BowlingFrame(false);
 
-            bowlingFrame.setPinsDropped(4);
-            bowlingFrame.setPinsDropped(5);
+            bowlingFrame.SetPinsDropped(4);
+            bowlingFrame.SetPinsDropped(5);
 
-            Assert.Throws<InvalidOperationException>(() => bowlingFrame.setPinsDropped(1));
+            Assert.Throws<InvalidOperationException>(() => bowlingFrame.SetPinsDropped(1));
         }
 
         [Theory]
@@ -25,7 +25,7 @@ namespace BowlingCounterApp.Tests
         {
             BowlingFrame bowlingFrame = new BowlingFrame(false);
 
-            Assert.Throws<ArgumentException>(() => bowlingFrame.setPinsDropped(value));
+            Assert.Throws<ArgumentException>(() => bowlingFrame.SetPinsDropped(value));
         }
 
         [Fact]
@@ -33,10 +33,10 @@ namespace BowlingCounterApp.Tests
         {
             BowlingFrame bowlingFrame = new BowlingFrame(false);
 
-            bowlingFrame.setPinsDropped(5);
-            bowlingFrame.setPinsDropped(5);
+            bowlingFrame.SetPinsDropped(5);
+            bowlingFrame.SetPinsDropped(5);
 
-            bowlingFrame.resetState();
+            bowlingFrame.ResetState();
 
             Assert.Equal(0, bowlingFrame.Frame1);
             Assert.Equal(0, bowlingFrame.Frame2);

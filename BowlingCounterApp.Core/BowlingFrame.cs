@@ -27,7 +27,7 @@ namespace BowlingCounterApp.Core
             this.LastFrame = LastFrame;
         }
 
-        public BonusType setPinsDropped(int numberOfPinsDropped)
+        public BonusType SetPinsDropped(int numberOfPinsDropped)
         {
             if (numberOfPinsDropped > 10 || numberOfPinsDropped < 0)
             {
@@ -37,7 +37,7 @@ namespace BowlingCounterApp.Core
             if (NumberOfPlays == 0)
             {
 
-                if (isStrike(numberOfPinsDropped))
+                if (IsStrike(numberOfPinsDropped))
                 {
                     BonusType = BonusType.Strike;
                     CantPlayAnymore = !LastFrame ? true : false;
@@ -58,7 +58,7 @@ namespace BowlingCounterApp.Core
                 }
                 else if (!LastFrame)
                 {
-                    if (isSpare(Frame1, numberOfPinsDropped))
+                    if (IsSpare(Frame1, numberOfPinsDropped))
                     {
                         BonusType = BonusType.Spare;
                     }
@@ -69,19 +69,19 @@ namespace BowlingCounterApp.Core
                 {
                     if (!CantPlayAnymore)
                     {
-                        if ((isSpare(Frame1, Frame2) || isStrike(Frame1) || isStrike(Frame2)) && NumberOfPlays == 2)
+                        if ((IsSpare(Frame1, Frame2) || IsStrike(Frame1) || IsStrike(Frame2)) && NumberOfPlays == 2)
                         {
                             Frame3 = numberOfPinsDropped;
                             NumberOfPlays++;
                             CantPlayAnymore = true;
                         }
-                        else if (isStrike(numberOfPinsDropped) || isStrike(Frame1))
+                        else if (IsStrike(numberOfPinsDropped) || IsStrike(Frame1))
                         {
                             BonusType = BonusType.Strike;
                             Frame2 = numberOfPinsDropped;
                             NumberOfPlays++;
                         }
-                        else if (isSpare(Frame1, numberOfPinsDropped))
+                        else if (IsSpare(Frame1, numberOfPinsDropped))
                         {
                             BonusType = BonusType.Spare;
                             Frame2 = numberOfPinsDropped;
@@ -99,12 +99,12 @@ namespace BowlingCounterApp.Core
             return BonusType;
         }
 
-        public void calculateScore()
+        public void CalculateScore()
         {
             this.Points = Frame1 + Frame2 + Frame3 + Bonus;
         }
 
-        public void resetState()
+        public void ResetState()
         {
             this.Frame1 = 0;
             this.Frame2 = 0;
@@ -116,12 +116,12 @@ namespace BowlingCounterApp.Core
             this.NumberOfPlays = 0;
         }
 
-        private bool isStrike(int numberOfPinsDropped)
+        private bool IsStrike(int numberOfPinsDropped)
         {
             return numberOfPinsDropped == 10;
         }
 
-        private bool isSpare(int previousFrame, int numberOfPinsDropped)
+        private bool IsSpare(int previousFrame, int numberOfPinsDropped)
         {
             return previousFrame + numberOfPinsDropped == 10;
         }
