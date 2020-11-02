@@ -6,13 +6,15 @@ namespace BowlingCounterApp.Core
 {
     public class BowlingCounter
     {
+        private int _score = 0;
         public void throwBall(int pinsDropped)
         {
+            _score += pinsDropped;
         }
 
         public int TotalScore()
         {
-            return 0;
+            return _score;
         }
     };
 }
