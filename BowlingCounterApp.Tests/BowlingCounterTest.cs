@@ -6,12 +6,17 @@ namespace BowlingCounterApp.Tests
 {
     public class BowlingCounterTest
     {
+        BowlingCounter gameScoring;
+
+        public BowlingCounterTest()
+        {
+            gameScoring = new BowlingCounter();
+        }
+
 
         [Fact]
         public void AssertGutterGameScoreIsZero()
         {
-            var gameScoring = new BowlingCounter();
-
             for (int i = 0; i < 20; i++)
             {
                 gameScoring.throwBall(0);
@@ -23,8 +28,6 @@ namespace BowlingCounterApp.Tests
         [Fact]
         public void AssertAllOnesGameScoreIsTwenty()
         {
-            var gameScoring = new BowlingCounter();
-
             for (int i = 0; i < 20; i++)
             {
                 gameScoring.throwBall(1);
