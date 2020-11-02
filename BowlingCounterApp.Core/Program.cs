@@ -18,7 +18,8 @@ namespace BowlingCounterApp.Core
                 if (firstPlay < 10)
                     secondPlay = askForPinsDropped(2);
 
-                bowlingCounter.PlayFrame(firstPlay, secondPlay);
+                bowlingCounter.throwBall(firstPlay);
+                bowlingCounter.throwBall(secondPlay);
             }
         }
 
