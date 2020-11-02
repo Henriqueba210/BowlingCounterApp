@@ -20,15 +20,18 @@ namespace BowlingCounterApp.Tests
             Assert.Equal(0, gameScoring.TotalScore());
         }
 
-        // [Fact]
-        // public void AssertOnePinDropGameIsTwenty()
-        // {
-        //     var bowlingCounter = new BowlingCounter();
+        [Fact]
+        public void AssertAllOnesGameScoreIsTwenty()
+        {
+            var gameScoring = new BowlingCounter();
 
-        //     RepeatThrows(bowlingCounter, 1, 10);
+            for (int i = 0; i < 20; i++)
+            {
+                gameScoring.throwBall(1);
+            }
 
-        //     Assert.Equal(20, bowlingCounter.TotalScore);
-        // }
+            Assert.Equal(20, gameScoring.TotalScore());
+        }
 
         // [Fact]
         // public void AssertPerfectGameScoreIs300()
