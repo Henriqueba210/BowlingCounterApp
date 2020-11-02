@@ -10,11 +10,14 @@ namespace BowlingCounterApp.Tests
         [Fact]
         public void AssertGutterGameScoreIsZero()
         {
-            var bowlingCounter = new BowlingCounter();
+            var gameScoring = new BowlingCounter();
 
-            bowlingCounter.throwBall(0);
+            for (int i = 0; i < 20; i++)
+            {
+                gameScoring.throwBall(0);
+            }
 
-            Assert.Equal(0, bowlingCounter.TotalScore());
+            Assert.Equal(0, gameScoring.TotalScore());
         }
 
         // [Fact]
