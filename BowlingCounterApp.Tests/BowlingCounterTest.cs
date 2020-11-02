@@ -17,10 +17,7 @@ namespace BowlingCounterApp.Tests
         [Fact]
         public void AssertGutterGameScoreIsZero()
         {
-            for (int i = 0; i < 20; i++)
-            {
-                gameScoring.throwBall(0);
-            }
+            repeatBallThrows(20, 0);
 
             Assert.Equal(0, gameScoring.TotalScore());
         }
@@ -28,10 +25,7 @@ namespace BowlingCounterApp.Tests
         [Fact]
         public void AssertAllOnesGameScoreIsTwenty()
         {
-            for (int i = 0; i < 20; i++)
-            {
-                gameScoring.throwBall(1);
-            }
+            repeatBallThrows(20, 1);
 
             Assert.Equal(20, gameScoring.TotalScore());
         }
@@ -119,5 +113,13 @@ namespace BowlingCounterApp.Tests
 
         //     Assert.Equal(15, bowlingCounter.TotalScore);
         // }
+
+        public void repeatBallThrows(int numberOfThrows, int numberOfPinsDropped)
+        {
+            for (int i = 0; i < numberOfThrows; i++)
+            {
+                gameScoring.throwBall(numberOfPinsDropped);
+            }
+        }
     }
 }
