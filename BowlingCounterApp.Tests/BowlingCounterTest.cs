@@ -116,7 +116,7 @@ namespace BowlingCounterApp.Tests
         //     Assert.Equal(15, bowlingCounter.TotalScore);
         // }
 
-        public void repeatBallThrows(int numberOfThrows, int numberOfPinsDropped)
+        private void repeatBallThrows(int numberOfThrows, int numberOfPinsDropped)
         {
             for (int i = 0; i < numberOfThrows; i++)
             {
