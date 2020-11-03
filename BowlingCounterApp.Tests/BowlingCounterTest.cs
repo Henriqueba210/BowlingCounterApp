@@ -53,7 +53,6 @@ namespace BowlingCounterApp.Tests
         [Fact]
         public void AssertPerfectGameScoreIs300()
         {
-
             repeatBallThrows(12, 10);
 
             Assert.Equal(300, gameScoring.TotalScore());
