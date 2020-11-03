@@ -22,7 +22,11 @@ namespace BowlingCounterApp.Core
 
             for (int frame = 0; frame < 10; frame++)
             {
-                score += this.rollsPerformed[ballIndex] + this.rollsPerformed[ballIndex + 1];
+                if (rollsPerformed[ballIndex] + rollsPerformed[ballIndex + 1] == 10)
+                    score += 10 + rollsPerformed[ballIndex + 2];
+                else
+                    score += rollsPerformed[ballIndex] + rollsPerformed[ballIndex + 1];
+
                 ballIndex += 2;
             }
 
