@@ -50,17 +50,14 @@ namespace BowlingCounterApp.Tests
             Assert.Equal(24, gameScoring.TotalScore());
         }
 
-        // [Fact]
-        // public void AssertPerfectGameScoreIs300()
-        // {
-        //     var bowlingCounter = new BowlingCounter();
+        [Fact]
+        public void AssertPerfectGameScoreIs300()
+        {
 
-        //     RepeatThrows(bowlingCounter, 10, 9);
+            repeatBallThrows(12, 10);
 
-        //     bowlingCounter.PlayFrame(10, 10, 10);
-
-        //     Assert.Equal(300, bowlingCounter.TotalScore);
-        // }
+            Assert.Equal(300, gameScoring.TotalScore());
+        }
 
         // [Fact]
         // public void AssertScoreIs30ForAStrikeFollowedBySpare()
