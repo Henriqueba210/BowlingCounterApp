@@ -12,7 +12,7 @@
 ## Game Logic
 
 The point system works as follows: A game is composed of 10 frames, each with two tries on dropping all pins, the score of the frame is determined by the number of pins dropped.
-If the player manages to drop all pins, the score of the next two frames will be added to the score of this frame. If a player manages to drop all pins in the second attempt a Spare will be given, so the points scored in the next frame will be added to its score.
+If the player manages to drop all pins, the score of the next two rolls will be added to the score of this frame. If a player manages to drop all pins in the second attempt a Spare will be given, so the points scored in the next roll will be added to its score.
 
 When a player reaches the last frame if they score 2 strikes or a spare they can play one more time to add score to that frame.
 
