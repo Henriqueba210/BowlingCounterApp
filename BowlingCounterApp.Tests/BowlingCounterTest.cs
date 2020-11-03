@@ -15,7 +15,7 @@ namespace BowlingCounterApp.Tests
 
 
         [Fact]
-        public void AssertGutterGameScoreIsZero()
+        public void GutterGameScoreIsZero()
         {
             repeatBallThrows(20, 0);
 
@@ -23,7 +23,7 @@ namespace BowlingCounterApp.Tests
         }
 
         [Fact]
-        public void AssertAllOnesGameScoreIsTwenty()
+        public void AllOnesGameScoreIsTwenty()
         {
             repeatBallThrows(20, 1);
 
@@ -31,7 +31,7 @@ namespace BowlingCounterApp.Tests
         }
 
         [Fact]
-        public void AssertScoreIs16ForASpareFollowedBy3Ball()
+        public void ScoreIs16ForASpareFollowedBy3Ball()
         {
             throwSpare();
             gameScoring.throwBall(3);
@@ -40,7 +40,7 @@ namespace BowlingCounterApp.Tests
         }
 
         [Fact]
-        public void AssertScoreIs24ForAStrikeFollowedBy3And4Ball()
+        public void ScoreIs24ForAStrikeFollowedBy3And4Ball()
         {
             throwStrike();
             gameScoring.throwBall(3);
@@ -51,7 +51,7 @@ namespace BowlingCounterApp.Tests
         }
 
         [Fact]
-        public void AssertPerfectGameScoreIs300()
+        public void PerfectGameScoreIs300()
         {
             repeatBallThrows(12, 10);
 
@@ -59,7 +59,7 @@ namespace BowlingCounterApp.Tests
         }
 
         [Fact]
-        public void AssertScoreIs30ForAStrikeFollowedBySpare()
+        public void ScoreIs30ForAStrikeFollowedBySpare()
         {
 
             throwSpare();
@@ -69,7 +69,7 @@ namespace BowlingCounterApp.Tests
         }
 
         [Fact]
-        public void AssertSpareWorksProperly()
+        public void SpareWorksProperly()
         {
             gameScoring.throwBall(1);
             gameScoring.throwBall(9);
