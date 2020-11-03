@@ -7,10 +7,11 @@ namespace BowlingCounterApp.Core
     public class BowlingCounter
     {
 
-        private List<int> rollsPerformed { get; set; } = new List<int>(21);
+        private int[] rollsPerformed { get; set; } = new int[21];
+        private int currentRoll = 0;
         public void throwBall(int pinsDropped)
         {
-            rollsPerformed.Add(pinsDropped);
+            rollsPerformed[currentRoll++] = pinsDropped;
         }
 
         public int TotalScore()
