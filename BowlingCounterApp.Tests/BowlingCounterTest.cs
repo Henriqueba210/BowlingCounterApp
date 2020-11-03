@@ -30,6 +30,17 @@ namespace BowlingCounterApp.Tests
             Assert.Equal(20, gameScoring.TotalScore());
         }
 
+        [Fact]
+        public void AssertScoreIs16ForASpareFollowedBy3Ball()
+        {
+            gameScoring.throwBall(5);
+            gameScoring.throwBall(5); // * Spare
+            gameScoring.throwBall(3);
+
+
+            Assert.Equal(16, gameScoring.TotalScore());
+        }
+
         // [Fact]
         // public void AssertPerfectGameScoreIs300()
         // {
@@ -42,16 +53,7 @@ namespace BowlingCounterApp.Tests
         //     Assert.Equal(300, bowlingCounter.TotalScore);
         // }
 
-        // [Fact]
-        // public void AssertScoreIs16ForASpareFollowedBy3Ball()
-        // {
-        //     var bowlingCounter = new BowlingCounter();
 
-        //     bowlingCounter.PlayFrame(4, 6);
-        //     bowlingCounter.PlayFrame(0, 3);
-
-        //     Assert.Equal(13, bowlingCounter.TotalScore);
-        // }
 
 
         // [Fact]
