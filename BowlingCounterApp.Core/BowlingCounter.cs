@@ -6,9 +6,13 @@ namespace BowlingCounterApp.Core
 {
     public class BowlingCounter
     {
-
-        private int[] rollsPerformed { get; set; } = new int[21];
+        private int[] rollsPerformed { get; set; }
         private int currentRoll = 0;
+
+        public BowlingCounter()
+        {
+            rollsPerformed = new int[21];
+        }
         public void throwBall(int pinsDropped)
         {
             rollsPerformed[currentRoll++] = pinsDropped;
