@@ -42,7 +42,7 @@ namespace BowlingCounterApp.Tests
         [Fact]
         public void AssertScoreIs24ForAStrikeFollowedBy3And4Ball()
         {
-            gameScoring.throwBall(10); // * Strike
+            throwStrike(); // * Strike
             gameScoring.throwBall(3);
             gameScoring.throwBall(4);
             repeatBallThrows(16, 0);
@@ -122,6 +122,11 @@ namespace BowlingCounterApp.Tests
         {
             gameScoring.throwBall(5);
             gameScoring.throwBall(5);
+        }
+
+        private void throwStrike()
+        {
+            gameScoring.throwBall(10);
         }
     }
 }
