@@ -22,7 +22,7 @@ namespace BowlingCounterApp.Core
 
             for (int frame = 0; frame < 10; frame++)
             {
-                if (rollsPerformed[rollIndex] == 10) // * Strike
+                if (isStrike(rollIndex)) // * Strike
                 {
                     score += 10 + calculateStrikeBonus(rollIndex);
                     rollIndex--;
@@ -38,6 +38,11 @@ namespace BowlingCounterApp.Core
             }
 
             return score;
+        }
+
+        private bool isStrike(int rollIndex)
+        {
+            return rollsPerformed[rollIndex] == 10;
         }
 
         private int sumOfPinsDroppedInFrame(int rollIndex)
