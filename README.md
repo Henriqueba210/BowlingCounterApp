@@ -59,6 +59,9 @@ When a player reaches the last frame if they score 2 strikes or a spare they can
     dotnet watch --project BowlingCounterApp.Tests test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./lcov.info
     ```
 
+- Optional:
+  If you are using Visual Studio Code I recommend using the [Coverage Gutters extension](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) that can show you directly the coverage of your tests on the editor, if you also run the watch command it will automatically update the coverage report when the test completes.
+
 [contributors-shield]: https://img.shields.io/github/issues/Henriqueba210/BowlingCounterApp?style=flat-square
 [contributors-url]: https://github.com/Henriqueba210/BowlingCounterApp/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Henriqueba210/BowlingCounterApp?style=flat-square
