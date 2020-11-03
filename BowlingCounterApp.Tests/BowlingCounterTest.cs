@@ -36,7 +36,6 @@ namespace BowlingCounterApp.Tests
             throwSpare();
             gameScoring.throwBall(3);
 
-
             Assert.Equal(16, gameScoring.TotalScore());
         }
 
