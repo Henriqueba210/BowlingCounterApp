@@ -21,9 +21,9 @@ When a player reaches the last frame if they score 2 strikes or a spare they can
 - [x] Calculating the score without any bonus
 - [x] Calculating Strike bonuses
 - [x] Calculating Spare bonuses
-- [ ] Implement last frame game logic
+- [x] Implement last frame game logic
 - [ ] Game logic for multiple players
-- [ ] Create tests to confirm all functionality works properly
+- [x] Create tests to confirm all functionality works properly
 - [ ] Create a Web Api so that a client interface can access logic from the server
 
 ## Steps To Generate Coverage Reports
@@ -44,13 +44,19 @@ When a player reaches the last frame if they score 2 strikes or a spare they can
 4. Run the test command with this parameter to generate the coverage report
 
     ``` bash
-    dotnet test --collect:"XPlat Code Coverage"
+    dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./lcov.info ./BowlingCounterApp.Tests
     ```
 
 5. Run the reportgenerator command to generate the HTML coverage report
 
     ``` bash
-    reportgenerator -reports:BowlingCounterApp.Tests/TestResults/{Generated GUID for the report}/coverage.cobertura.xml -targetdir:coveragereport -reporttypes:Html
+    reportgenerator -reports:./BowlingCounterApp.Tests/lcov.info -targetdir:coveragereport -reporttypes:Html
+    ```
+
+6. It is also possible to run dotnet watch to rerun tests and generate coverage whenever a new change is detected to one of the project files
+
+    ``` bash
+    dotnet watch --project BowlingCounterApp.Tests test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./lcov.info
     ```
 
 [contributors-shield]: https://img.shields.io/github/issues/Henriqueba210/BowlingCounterApp?style=flat-square
