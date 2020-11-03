@@ -39,3 +39,4 @@ msbuild.wrn
 # Code Coverage
 coveragereport/
 TestResults/
+BowlingCounterApp.Tests/lcov.info

@@ -6,128 +6,63 @@ namespace BowlingCounterApp.Core
 {
     public class BowlingCounter
     {
-        public int CurrentFrame { get; private set; } = 0;
 
-        public int TotalScore { get; private set; }
-
-        public void PlayFrame(int firstPlay, int secondPlay = 0, int thirdPlay = 0)
+        private int[] rollsPerformed { get; set; } = new int[21];
+        private int currentRoll = 0;
+        public void throwBall(int pinsDropped)
         {
-            var bowlingFrame = frames[CurrentFrame];
-
-            var bonusScored = bowlingFrame.SetPinsDropped(firstPlay);
-            if (bonusScored == BonusType.Strike && !bowlingFrame.LastFrame)
-            {
-                IndexStrikeFramesToBeScored.Add(CurrentFrame);
-            }
-            else if (bowlingFrame.LastFrame)
-            {
-                bonusScored = bowlingFrame.SetPinsDropped(secondPlay);
-                if (bonusScored == BonusType.Spare || bonusScored == BonusType.Strike)
-                {
-                    bowlingFrame.SetPinsDropped(thirdPlay);
-                }
-            }
-            else
-            {
-                bonusScored = bowlingFrame.SetPinsDropped(secondPlay);
-                if (bonusScored == BonusType.Spare)
-                    IndexSpareFramesToBeScored.Add(CurrentFrame);
-            }
-
-            bowlingFrame.CalculateScore();
-
-            CalculateStrikeScoreBonus();
-            CalculateSpareScoreBonus();
-
-            CalculateTotalScore();
-
-            CurrentFrame++;
+            rollsPerformed[currentRoll++] = pinsDropped;
         }
 
-        public ImmutableList<BowlingFrame> frames = ImmutableList.Create<BowlingFrame>(
-                new BowlingFrame(false),
-                new BowlingFrame(false),
-                new BowlingFrame(false),
-                new BowlingFrame(false),
-                new BowlingFrame(false),
-                new BowlingFrame(false),
-                new BowlingFrame(false),
-                new BowlingFrame(false),
-                new BowlingFrame(false),
-                new BowlingFrame(true)
-            );
-
-        public void CalculateStrikeScoreBonus()
+        public int TotalScore()
         {
-            if (IndexStrikeFramesToBeScored.Count > 0 && !frames[CurrentFrame].LastFrame)
+            var score = 0;
+
+            var rollIndex = 0;
+
+            for (int frame = 0; frame < 10; frame++)
             {
-                foreach (var StrikeFrame in IndexStrikeFramesToBeScored.ToArray())
+                if (isStrike(rollIndex)) // * Strike
                 {
-                    if (CurrentFrame >= StrikeFrame + 1)
-                    {
-                        CalculateBonus(frames[StrikeFrame], frames[CurrentFrame]);
-                        if (CurrentFrame == StrikeFrame + 2)
-                            IndexStrikeFramesToBeScored.Remove(StrikeFrame);
-                    }
+                    score += 10 + calculateStrikeBonus(rollIndex);
+                    rollIndex--;
                 }
+                else if (isSpare(rollIndex))
+                {
+                    score += 10 + calculateSpareBonus(rollIndex);
+                }
+                else
+                    score += sumOfPinsDroppedInFrame(rollIndex);
+
+                rollIndex += 2;
             }
-            else
-            {
-                var frame8 = frames[7];
-                var frame9 = frames[8];
-                var frame10 = frames[9];
 
-                if (frame8.BonusType == BonusType.Strike)
-                {
-                    frame8.Bonus = frame9.Points + frame10.Frame1;
-                    frame8.CalculateScore();
-                }
-                if (frame9.BonusType == BonusType.Strike)
-                {
-                    frame9.Bonus = frame10.Frame1 + frame10.Frame2;
-                    frame9.CalculateScore();
-                }
-            }
+            return score;
         }
 
-        public void CalculateSpareScoreBonus()
+        private bool isStrike(int rollIndex)
         {
-            if (IndexSpareFramesToBeScored.Count > 0)
-            {
-                foreach (var SpareFrame in IndexSpareFramesToBeScored.ToArray())
-                {
-                    if (CurrentFrame == SpareFrame + 1)
-                    {
-                        CalculateBonus(frames[SpareFrame], frames[CurrentFrame]);
-                        IndexSpareFramesToBeScored.Remove(SpareFrame);
-                    }
-                }
-            }
+            return rollsPerformed[rollIndex] == 10;
         }
 
-        public void CalculateBonus(BowlingFrame bonusFrame, BowlingFrame nextFrame)
+        private int sumOfPinsDroppedInFrame(int rollIndex)
         {
-            bonusFrame.Bonus += nextFrame.Points;
-            bonusFrame.CalculateScore();
+            return rollsPerformed[rollIndex] + rollsPerformed[rollIndex + 1];
         }
 
-        public void CalculateTotalScore()
+        private int calculateSpareBonus(int rollIndex)
         {
-            this.TotalScore = 0;
-            this.frames.ForEach((bowlingFrame) => this.TotalScore += bowlingFrame.Points);
+            return rollsPerformed[rollIndex + 2];
         }
 
-        public List<int> IndexStrikeFramesToBeScored = new List<int>();
-
-        public List<int> IndexSpareFramesToBeScored = new List<int>();
-
-        public void ResetGameState()
+        private int calculateStrikeBonus(int rollIndex)
         {
-            this.CurrentFrame = 0;
-            this.TotalScore = 0;
-            this.frames.ForEach((bowlingFrame) => bowlingFrame.ResetState());
-            this.IndexSpareFramesToBeScored.Clear();
-            this.IndexStrikeFramesToBeScored.Clear();
+            return rollsPerformed[rollIndex + 1] + rollsPerformed[rollIndex + 2];
+        }
+
+        private bool isSpare(int rollIndex)
+        {
+            return rollsPerformed[rollIndex] + rollsPerformed[rollIndex + 1] == 10;
         }
     };
 }
