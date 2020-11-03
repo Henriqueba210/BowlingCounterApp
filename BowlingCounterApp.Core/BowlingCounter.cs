@@ -22,8 +22,15 @@ namespace BowlingCounterApp.Core
 
             for (int frame = 0; frame < 10; frame++)
             {
-                if (isSpare(rollIndex))
+                if (rollsPerformed[rollIndex] == 10)
+                {
+                    score += 10 + rollsPerformed[rollIndex + 1] + rollsPerformed[rollIndex + 2];
+                    rollIndex--;
+                }
+                else if (isSpare(rollIndex))
+                {
                     score += 10 + rollsPerformed[rollIndex + 2];
+                }
                 else
                     score += rollsPerformed[rollIndex] + rollsPerformed[rollIndex + 1];
 
