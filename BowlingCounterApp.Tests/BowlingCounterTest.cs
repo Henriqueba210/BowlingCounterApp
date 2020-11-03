@@ -58,53 +58,26 @@ namespace BowlingCounterApp.Tests
             Assert.Equal(300, gameScoring.TotalScore());
         }
 
-        // [Fact]
-        // public void AssertScoreIs30ForAStrikeFollowedBySpare()
-        // {
-        //     var bowlingCounter = new BowlingCounter();
+        [Fact]
+        public void AssertScoreIs30ForAStrikeFollowedBySpare()
+        {
 
-        //     PerformStrike(bowlingCounter);
-        //     PerformSpare(bowlingCounter);
+            throwSpare();
+            throwStrike();
 
-        //     Assert.Equal(30, bowlingCounter.TotalScore);
-        // }
+            Assert.Equal(30, gameScoring.TotalScore());
+        }
 
-        // [Fact]
-        // public void AssertFunctionalityForSpareInLastFrameWorks()
-        // {
-        //     var bowlingCounter = new BowlingCounter();
+        [Fact]
+        public void AssertSpareWorksProperly()
+        {
+            gameScoring.throwBall(1);
+            gameScoring.throwBall(9);
+            gameScoring.throwBall(1);
+            gameScoring.throwBall(3);
 
-        //     RepeatThrows(bowlingCounter, 5, 9);
-
-        //     bowlingCounter.PlayFrame(5, 5, 5);
-
-        //     Assert.Equal(15, bowlingCounter.frames[9].Points);
-        // }
-
-        // [Fact]
-        // public void AssertFunctionalityForNotBeingAbleToPlayExtraFrameInLastFrameWorks()
-        // {
-        //     var bowlingCounter = new BowlingCounter();
-
-        //     RepeatThrows(bowlingCounter, 5, 9);
-
-        //     bowlingCounter.PlayFrame(5, 4, 1);
-
-        //     Assert.Equal(9, bowlingCounter.frames[9].Points);
-        // }
-
-        // [Fact]
-        // public void Test()
-        // {
-        //     var bowlingCounter = new BowlingCounter();
-
-        //     bowlingCounter.PlayFrame(1, 9);
-
-        //     bowlingCounter.PlayFrame(1, 3);
-
-
-        //     Assert.Equal(15, bowlingCounter.TotalScore);
-        // }
+            Assert.Equal(15, gameScoring.TotalScore());
+        }
 
         private void repeatBallThrows(int numberOfThrows, int numberOfPinsDropped)
         {
