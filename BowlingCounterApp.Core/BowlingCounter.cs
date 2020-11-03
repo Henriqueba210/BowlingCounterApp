@@ -26,7 +26,7 @@ namespace BowlingCounterApp.Core
 
             for (int frame = 0; frame < 10; frame++)
             {
-                if (isStrike(rollIndex)) // * Strike
+                if (isStrike(rollIndex))
                 {
                     score += 10 + calculateStrikeBonus(rollIndex);
                     rollIndex--;
