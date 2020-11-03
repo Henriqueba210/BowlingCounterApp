@@ -33,8 +33,7 @@ namespace BowlingCounterApp.Tests
         [Fact]
         public void AssertScoreIs16ForASpareFollowedBy3Ball()
         {
-            gameScoring.throwBall(5);
-            gameScoring.throwBall(5); // * Spare
+            throwSpare();
             gameScoring.throwBall(3);
 
 
@@ -122,6 +121,12 @@ namespace BowlingCounterApp.Tests
             {
                 gameScoring.throwBall(numberOfPinsDropped);
             }
+        }
+
+        private void throwSpare()
+        {
+            gameScoring.throwBall(5);
+            gameScoring.throwBall(5);
         }
     }
 }
