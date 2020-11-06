@@ -62,6 +62,33 @@ When a player reaches the last frame if they score 2 strikes or a spare they can
 - Optional:
   If you are using Visual Studio Code I recommend using the [Coverage Gutters extension](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) that can show you directly the coverage of your tests on the editor, if you also run the watch command it will automatically update the coverage report when the test completes.
 
+  You can also add the following json to your launch.json file in VSCode to be able to attach to the process of the API docker container when you build the container with the following command:
+
+  - Build command:
+
+  ```bash
+  docker-compose build -build-arg ReleaseType=Debug
+  ```
+
+  - Launch parameters for VSCode
+
+  ```Json
+    "name": ".NET Core Docker Attach",
+    "type": "coreclr",
+    "request": "attach",
+    "processId": "${command:pickRemoteProcess}",
+    "pipeTransport": {
+        "pipeProgram": "docker-compose",
+        "pipeArgs": ["exec", "-T", "bowlingcounterappapi"],
+        "debuggerPath": "/vsdbg/vsdbg",
+        "pipeCwd": "${workspaceRoot}",
+        "quoteArgs": false
+    },
+    "sourceFileMap": {
+        "/src": "${workspaceRoot}"
+    }
+  ```
+
 [contributors-shield]: https://img.shields.io/github/issues/Henriqueba210/BowlingCounterApp?style=flat-square
 [contributors-url]: https://github.com/Henriqueba210/BowlingCounterApp/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Henriqueba210/BowlingCounterApp?style=flat-square
