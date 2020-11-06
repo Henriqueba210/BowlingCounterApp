@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingCounterApp.Core", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingCounterApp.Tests", "BowlingCounterApp.Tests\BowlingCounterApp.Tests.csproj", "{804B848B-F8FA-47CE-ABB8-0CAEB1C1E90E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingCounterApp.Api", "BowlingCounterApp.Api\BowlingCounterApp.Api.csproj", "{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{804B848B-F8FA-47CE-ABB8-0CAEB1C1E90E}.Release|x64.Build.0 = Release|Any CPU
 		{804B848B-F8FA-47CE-ABB8-0CAEB1C1E90E}.Release|x86.ActiveCfg = Release|Any CPU
 		{804B848B-F8FA-47CE-ABB8-0CAEB1C1E90E}.Release|x86.Build.0 = Release|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Debug|x64.Build.0 = Debug|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Debug|x86.Build.0 = Debug|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Release|x64.ActiveCfg = Release|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Release|x64.Build.0 = Release|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Release|x86.ActiveCfg = Release|Any CPU
+		{37F61506-9A1D-40CE-B8EB-7BBBA6B3B03A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
